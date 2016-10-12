@@ -309,6 +309,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
+bignumber.js@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-2.3.0.tgz#597a02d791edc3d64f17850e21789e7a4095df66"
+
 bin-version-check@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/bin-version-check/-/bin-version-check-2.1.0.tgz#e4e5df290b9069f7d111324031efc13fdd11a5b0"
@@ -1528,6 +1532,14 @@ muri@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/muri/-/muri-1.1.1.tgz#64bd904eaf8ff89600c994441fad3c5195905ac2"
 
+mysql:
+  version "2.11.1"
+  resolved "https://registry.yarnpkg.com/mysql/-/mysql-2.11.1.tgz#7bdbfda477141fd15eeec2b710320c0d20ce7d08"
+  dependencies:
+    bignumber.js "2.3.0"
+    readable-stream "1.1.14"
+    sqlstring "2.0.1"
+
 nan@^2.3.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.4.0.tgz#fb3c59d45fe4effe215f0b890f8adf6eb32d2232"
@@ -1970,7 +1982,7 @@ read-pkg@^1.0.0:
     normalize-package-data "^2.3.2"
     path-type "^1.0.0"
 
-readable-stream@^1.1.12:
+readable-stream@^1.1.12, readable-stream@1.1.14:
   version "1.1.14"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
   dependencies:
@@ -2254,6 +2266,10 @@ split@^1.0.0:
   resolved "https://registry.yarnpkg.com/split/-/split-1.0.0.tgz#c4395ce683abcd254bc28fe1dabb6e5c27dcffae"
   dependencies:
     through "2"
+
+sqlstring@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/sqlstring/-/sqlstring-2.0.1.tgz#bcd3c3931af1a5ab7d54a558eb3563ca3d378b98"
 
 sshpk@^1.7.0:
   version "1.10.1"

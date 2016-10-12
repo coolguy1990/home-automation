@@ -4,7 +4,7 @@
 1. NodeJs (for backend server)
 2. PostgresSQL (for relational data)
 3. MongoDB (for sensor data)
-4. React + Flux (for frontend admin dashboard)
+4. Angular 2 (for frontend admin dashboard)
 
 
 ## Client Setup

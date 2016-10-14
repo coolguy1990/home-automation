@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTableIfNotExists('systems', function (table) {
       table.increments();
-      table.uuid('system_uid');
+      table.uuid('uuid');
       table.integer('user_id').unsigned();
       table.foreign('user_id').references('users.id');
       table.string('name');

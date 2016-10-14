@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTableIfNotExists('modules', function (table) {
       table.increments();
+      table.uuid('uuid');
       table.string('name');
       table.string('description');
       table.string('key');

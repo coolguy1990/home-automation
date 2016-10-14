@@ -1338,7 +1338,7 @@ load-json-file@^1.0.0:
     pinkie-promise "^2.0.0"
     strip-bom "^2.0.0"
 
-lodash@^4.0.0, lodash@^4.13.1, lodash@^4.2.0, lodash@^4.6.0, lodash@^4.8.0:
+lodash, lodash@^4.0.0, lodash@^4.13.1, lodash@^4.2.0, lodash@^4.6.0, lodash@^4.8.0:
   version "4.16.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.16.4.tgz#01ce306b9bad1319f2a5528674f88297aeb70127"
 
@@ -1465,6 +1465,16 @@ mkdirp@^0.5.0, mkdirp@^0.5.1, "mkdirp@>=0.5 0", mkdirp@~0.5.0:
   dependencies:
     minimist "0.0.8"
 
+moment, "moment@>= 2.6.0":
+  version "2.15.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.15.1.tgz#e979c2a29e22888e60f396f2220a6118f85cd94c"
+
+moment-timezone:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.6.tgz#8dcf7bb648d5dcd0f387d6bfd8f3dd9bbba16a86"
+  dependencies:
+    moment ">= 2.6.0"
+
 mongodb-core@2.0.12:
   version "2.0.12"
   resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-2.0.12.tgz#bb66aad550e252731f8ad49276815264a91c337c"
@@ -1566,7 +1576,7 @@ node-pre-gyp@^0.6.29:
     tar "~2.2.0"
     tar-pack "~3.1.0"
 
-node-uuid@^1.4.7, node-uuid@~1.4.7:
+node-uuid, node-uuid@^1.4.7, node-uuid@~1.4.7:
   version "1.4.7"
   resolved "https://registry.yarnpkg.com/node-uuid/-/node-uuid-1.4.7.tgz#6da5a17668c4b3dd59623bda11cf7fa4c1f60a6f"
 
@@ -2439,6 +2449,10 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "~1.0.0"
     spdx-expression-parse "~1.0.0"
+
+validator:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-6.0.0.tgz#305c296d3691cfd9d0db1b3d449036eede2f542f"
 
 vary@~1.1.0:
   version "1.1.0"

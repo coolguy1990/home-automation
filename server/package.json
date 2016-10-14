@@ -4,7 +4,7 @@
   "description": "homeautomation using IoT",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "migrate": "./node_modules/.bin/knex migrate:latest --cwd . --knexfile config/index.js"
   },
   "repository": {
@@ -49,6 +49,7 @@
     "validator": "^6.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.11.4"
+    "babel-cli": "^6.11.4",
+    "nodemon": "^1.11.0"
   }
 }

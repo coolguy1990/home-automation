@@ -1,17 +1,19 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var mongoose =  require('mongoose');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var allowCrossOrigin = require('./middlewares/cors');
-var timestamp = require('./middlewares/timestamp');
-var disabledHeaders = require('./middlewares/disabledHeaders');
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var express = require('express')
+  path = require('path'),
+  favicon = require('serve-favicon'),
+  mongoose =  require('mongoose'),
+  cookieParser = require('cookie-parser'),
+  bodyParser = require('body-parser'),
+  methodOverride = require('method-override'),
+  allowCrossOrigin = require('./middlewares/cors'),
+  timestamp = require('./middlewares/timestamp'),
+  disabledHeaders = require('./middlewares/disabledHeaders'),
+  routes = require('./routes/index'),
+  users = require('./routes/users'),
+  logger = require('./logging'),
+  morgan = require('morgan');
 
+//express main app
 var app = express();
 
 // view engine setup
@@ -19,7 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+app.use(morgan('dev', { stream: logger.stream}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));

@@ -6,7 +6,9 @@ var mongoose =  require('mongoose');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-
+var allowCrossOrigin = require('./middlewares/cors');
+var timestamp = require('./middlewares/timestamp');
+var disabledHeaders = require('./middlewares/disabledHeaders');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -24,13 +26,9 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
 app.use(cookieParser());
 
-//allow crossorigin
-let allowCrossOrigin = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-};
-
+app.use(disabledHeaders);
 app.use(allowCrossOrigin);
+app.use(timestamp);
 app.use(require('node-compass')({mode: 'expanded'}));
 app.use(express.static(path.join(__dirname, 'public')));
 

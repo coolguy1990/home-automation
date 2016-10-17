@@ -25,6 +25,7 @@
   "homepage": "https://github.com/coolguy1990/home-automation#readme",
   "dependencies": {
     "amqp": "^0.2.6",
+    "bcryptjs": "^2.3.0",
     "bluebird": "^3.4.1",
     "body-parser": "~1.15.1",
     "bookshelf": "^0.10.2",

@@ -7,12 +7,14 @@ var _ = require('lodash'),
     config = require('../../config'),
     environment = 'development',
     db = knex(config[environment]),
+    bcrypt = require('bcryptjs'),
     baseBookshelf,
     proto;
 
 baseBookshelf = bookshelf(db);
 baseBookshelf.plugin('registry');
 baseBookshelf.plugin('virtuals');
+baseBookshelf.plugin('visibility');
 
 //Cache instance of base model prototype
 proto = baseBookshelf.Model.prototype;
@@ -58,9 +60,21 @@ baseBookshelf.Model = baseBookshelf.Model.extend({
     return attrs;
   },
 
+  fixPasswordHashes: function fixHashes(attrs) {
+    var self = this;
+
+    _.each(attrs, function each(value, key) {
+      if (value !== null && key == 'password') {
+        attrs[key] = bcrypt.hashSync(value, 10);
+      }
+    });
+
+    return attrs;
+  },
+
   //format date before writing
   format: function format(attrs) {
-    return this.fixDatesWhenSave(attrs);
+    return this.fixPasswordHashes(this.fixDatesWhenSave(attrs));
   },
 
   //format date before reading

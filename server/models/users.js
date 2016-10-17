@@ -8,6 +8,8 @@ var _ = require('lodash'),
 User = baseBookshelf.Model.extend({
   tableName: 'users',
 
+  hidden: ['password'],
+
   modules: function () {
     return this.hasMany('Modules');
   },

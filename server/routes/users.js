@@ -8,14 +8,16 @@ models.init();
 router.get('/', function (req, res, next) {
   userRepo.createUser({
     name: 'Kunal Mangaraj',
-    email: 'mangaraj.kunal@gmail.com',
+    email: 'mangaraj.kunal@gmail.comaaa',
     password: 'testing'
-  })
-  .then(function (user) {
-    res.json({error: false, data: {id: user.get('id')}});
-  })
-  .catch(function (err) {
-    res.status(500).json({error: true, data: {message: err.message}});
+  }, function (error, user) {
+    if (error) {
+      res.status(500).json({error: true, data: {message: error.message}});
+    }
+
+    if (user) {
+      res.json({error: false, data: {id: user.id}});
+    }
   });
 });
 

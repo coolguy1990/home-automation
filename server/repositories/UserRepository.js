@@ -1,5 +1,6 @@
 let models = require('../models'),
-  bcrypt = require('bcryptjs');
+  bcrypt = require('bcryptjs'),
+  Promise = require('bluebird');
 
 models.init();
 
@@ -11,13 +12,26 @@ module.exports = {
   },
 
   //create user
-  createUser: function createUser(obj) {
-    return models.User.forge({
+  //need to promisify this
+  createUser: function(obj, callback) {
+    var objHolder = {
       name: obj.name,
       email: obj.email,
       password: bcrypt.hashSync(obj.password, process.env.APP_SECRET)
-    })
-    .save();
+    };
+
+    new models.User(objHolder)
+    .fetch()
+    .then(function (user) {
+      if (user) {
+        callback(new Error('user already present'), null);
+      } else {
+        var user = new models.User(objHolder);
+        user.save().then(function(newUser) {
+          callback(null, newUser.attributes);
+        });
+      }
+    });
   },
 
   //update user
@@ -54,7 +68,7 @@ module.exports = {
   },
 
   //get user
-  getUserById: function getUser(userId) {
+  getUserById: function getUserById(userId) {
     return models.User.forge({
       id: userId
     })
@@ -63,12 +77,13 @@ module.exports = {
 
   //get user by email
   getUserByEmail: function getUserByEmail(email) {
-    return models.User.forge({
-      email: email
-    })
-    .orderBy('users.created_at', 'DESC')
-    .fetch({
-      require: true
-    });
+    return models.User.forge()
+      .query({
+        where: {
+          email: email
+        }
+      })
+      .orderBy('created_at', 'DESC')
+      .fetch();
   },
 };

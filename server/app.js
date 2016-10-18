@@ -45,7 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', require('./routes'));
 
 //Protected Routes
-app.use('/api/users', isAuthenticated, require('./routes/users'));
+app.use('/api/users', require('./routes/users'));
 
 
 

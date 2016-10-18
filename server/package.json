@@ -36,6 +36,7 @@
     "express": "^4.14.0",
     "file-stream-rotator": "^0.0.7",
     "fs-extra": "^0.30.0",
+    "jsonwebtoken": "^7.1.9",
     "knex": "^0.12.4",
     "lodash": "^4.16.4",
     "method-override": "^2.3.6",

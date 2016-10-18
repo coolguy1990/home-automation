@@ -8,10 +8,10 @@ var express = require('express')
   allowCrossOrigin = require('./middlewares/cors'),
   timestamp = require('./middlewares/timestamp'),
   disabledHeaders = require('./middlewares/disabledHeaders'),
-  routes = require('./routes/index'),
-  users = require('./routes/users'),
   logger = require('./logging'),
-  morgan = require('morgan');
+  morgan = require('morgan')
+  isAuthenticated = require('./middlewares/authenticated'),
+  jwt = require('jsonwebtoken');
 
 //express main app
 var app = express();
@@ -37,7 +37,18 @@ app.use(require('node-compass')({mode: 'expanded'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', routes);
-app.use('/users', users);
+// app.use('/users', users);
+
+// APPLICATION ROUTES GOES HERE
+
+//Unprotected Routes
+app.use('/api', require('./routes'));
+
+//Protected Routes
+app.use('/api/users', isAuthenticated, require('./routes/users'));
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

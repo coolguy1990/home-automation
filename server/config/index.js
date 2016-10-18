@@ -5,10 +5,10 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      host: '192.168.33.10',
-      database: 'homeautomation',
-      user:     'homestead',
-      password: 'secret'
+      host: process.env.DB_HOSTNAME || '192.168.33.10',
+      database: process.env.DB_DATABASE || 'homeautomation',
+      user:     process.env.DB_USER || 'homestead',
+      password: process.env.DB_PASSWORD || 'secret'
     },
     pool: {
       min: 2,

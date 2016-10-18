@@ -51,39 +51,30 @@ router.get('/all', function (req, res, next) {
   // });
 
   //get user
-  userRepo
-  .getUserById(1)
-  .then(function (user) {
-    if (!user) {
-      res.status(404).json({error: true, data: {}});
-    }
+  // userRepo
+  // .getUserById(1)
+  // .then(function (user) {
+  //   if (!user) {
+  //     res.status(404).json({error: true, data: {}});
+  //   }
 
-    res.json({error: false, data: user.toJSON()});
-  })
-  .catch(function (err) {
-    res.status(500).json({error: true, data: {message: err.message}});
-  })
-
-
-
-
-
-
-
-
-
-
-  //get all users
-  // userRepo.getAllUsers()
-  // .then(function (collection) {
-  //   res.json({
-  //     error: false,
-  //     data: collection.toJSON()
-  //   });
+  //   res.json({error: false, data: user.toJSON()});
   // })
   // .catch(function (err) {
   //   res.status(500).json({error: true, data: {message: err.message}});
   // });
+
+  //get all users
+  userRepo.getAllUsers()
+  .then(function (collection) {
+    res.json({
+      error: false,
+      data: collection.toJSON()
+    });
+  })
+  .catch(function (err) {
+    res.status(500).json({error: true, data: {message: err.message}});
+  });
 });
 
 module.exports = router;

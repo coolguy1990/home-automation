@@ -15,7 +15,7 @@ module.exports = {
     return models.User.forge({
       name: obj.name,
       email: obj.email,
-      password: bcrypt.hashSync(obj.password, 10)
+      password: bcrypt.hashSync(obj.password, process.env.APP_SECRET)
     })
     .save();
   },
@@ -59,5 +59,16 @@ module.exports = {
       id: userId
     })
     .fetch();
-  }
+  },
+
+  //get user by email
+  getUserByEmail: function getUserByEmail(email) {
+    return models.User.forge({
+      email: email
+    })
+    .orderBy('users.created_at', 'DESC')
+    .fetch({
+      require: true
+    });
+  },
 };

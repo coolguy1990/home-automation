@@ -8,7 +8,8 @@ module.exports = function(req, res, next) {
       if (err) {
         return res.json({
           success: false,
-          message: 'Failed to authenticate'
+          message: 'Failed to authenticate',
+          reason: err
         });
       } else {
         req.decoded = decoded;

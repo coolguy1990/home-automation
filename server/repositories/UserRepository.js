@@ -13,7 +13,7 @@ module.exports = {
 
   //create user
   //need to promisify this
-  createUser: function(obj, callback) {
+  createUser: function createUser(obj, callback) {
     var objHolder = {
       name: obj.name,
       email: obj.email,

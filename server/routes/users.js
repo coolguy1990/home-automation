@@ -10,15 +10,15 @@ router.get('/', function (req, res, next) {
     name: 'Kunal Mangaraj',
     email: 'mangaraj.kunal@gmail.comaaa',
     password: 'testing'
-  }, function (error, user) {
-    if (error) {
-      res.status(500).json({error: true, data: {message: error.message}});
-    }
-
-    if (user) {
-      res.json({error: false, data: {id: user.id}});
-    }
+  })
+  .then(function(user) {
+    res.json({error: false, data: {id: user.id}});
+  })
+  .catch(function(err) {
+    res.status(500).json({error: true, data: {message: err.message}});
   });
+
+
 });
 
 router.get('/all', function (req, res, next) {

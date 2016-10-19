@@ -11,26 +11,56 @@ module.exports = {
       .fetch();
   },
 
-  //create user
-  //need to promisify this
-  createUser: function createUser(obj, callback) {
-    var objHolder = {
-      name: obj.name,
-      email: obj.email,
-      password: bcrypt.hashSync(obj.password, process.env.APP_SECRET)
-    };
+  createUser: function createUser(obj) {
+    var that  = this;
+    return new Promise(function(resolve, reject) {
+      that.checkUserExists(obj.email)
+        .then(function (data) {
+          if (data.status) {
+            reject(new Error('User already exists'));
+          } else {
+            new models.User({
+              name: obj.name,
+              email: obj.email,
+              password: bcrypt.hashSync(obj.password, process.env.APP_SECRET)
+            })
+            .save()
+            .then(function (user) {
+              resolve(user.attributes);
+            })
+            .catch(reject);
+          }
+        })
+        .catch(reject)
+    });
+  },
 
-    new models.User(objHolder)
-    .fetch()
-    .then(function (user) {
-      if (user) {
-        callback(new Error('user already present'), null);
-      } else {
-        var user = new models.User(objHolder);
-        user.save().then(function(newUser) {
-          callback(null, newUser.attributes);
+  checkUserExists: function checkUserExists(email) {
+    return new Promise(function(resolve, reject) {
+      var user = new models.User({
+        email: email
+      })
+      .orderBy('created_at', 'DESC')
+      .fetch({
+        require: true
+      })
+      .then(function (user) {
+        var status = false;
+        if(user.attributes) {
+          status = true;
+        }
+        resolve({
+          status: status,
+          user: user.attributes
         });
-      }
+      })
+      .catch(models.User.NotFoundError, function (err) {
+        resolve({
+          status: false,
+          user: null
+        });
+      })
+      .catch(TypeError, reject);
     });
   },
 

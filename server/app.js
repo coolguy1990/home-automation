@@ -36,17 +36,26 @@ app.use(timestamp);
 app.use(require('node-compass')({mode: 'expanded'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', routes);
-// app.use('/users', users);
-
 // APPLICATION ROUTES GOES HERE
 
-//Unprotected Routes
+/*
+**********************
+* UnProtected Routes *
+**********************
+*/
 app.use('/api', require('./routes'));
 
-//Protected Routes
-app.use('/api/users', require('./routes/users'));
+/*
+********************
+* Protected Routes *
+********************
+*/
+//User CRUD Routes
+app.use('/api/users', isAuthenticated, require('./routes/users'));
 
+//Module CRUD Routes
+
+//Components CRUD Routes
 
 
 

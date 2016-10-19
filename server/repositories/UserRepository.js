@@ -31,7 +31,7 @@ module.exports = {
             .catch(reject);
           }
         })
-        .catch(reject)
+        .catch(reject);
     });
   },
 

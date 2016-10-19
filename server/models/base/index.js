@@ -5,9 +5,8 @@ var _ = require('lodash'),
     moment = require('moment'),
     bookshelf = require('bookshelf'),
     config = require('../../config'),
-    environment = 'development',
+    environment = process.env.APP_ENV || 'development',
     db = knex(config[environment]),
-    bcrypt = require('bcryptjs'),
     baseBookshelf,
     proto;
 
@@ -60,21 +59,9 @@ baseBookshelf.Model = baseBookshelf.Model.extend({
     return attrs;
   },
 
-  fixPasswordHashes: function fixHashes(attrs) {
-    var self = this;
-
-    _.each(attrs, function each(value, key) {
-      if (value !== null && key == 'password') {
-        attrs[key] = bcrypt.hashSync(value, 10);
-      }
-    });
-
-    return attrs;
-  },
-
   //format date before writing
   format: function format(attrs) {
-    return this.fixPasswordHashes(this.fixDatesWhenSave(attrs));
+    return this.fixDatesWhenSave(attrs);
   },
 
   //format date before reading

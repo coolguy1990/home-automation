@@ -39,14 +39,20 @@
     <main>
       <v-container fluid>
         <div class="title">Click on sidebar to re-open</div>
-        <!--v-router-->
+        <button-comp></button-comp>
       </v-container>
     </main>
   </v-app>
 </template>
 
 <script>
+  import Button from './Button.vue'
+
   export default {
+    name: 'Dashboard',
+    components: {
+      'button-comp': Button,
+    },
     data () {
       return {
         drawer: true,

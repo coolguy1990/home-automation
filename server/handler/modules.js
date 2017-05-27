@@ -1,7 +1,10 @@
 const TcpServer = require('./tcp');
+const UdpServer = require('./udp');
+
+const PORT = 22222;
 
 const server = (new TcpServer({
-    port: 22222
+    port: PORT
 }));
 
 server.listen();
@@ -28,28 +31,16 @@ server.on('message', (socket, data) => {
     console.log(`received from ${socket.remoteAddress}:${socket.remotePort}- `, data.toString());
 });
 
-/*
 
+// UDP Layer
 
-Server.prototype.handleError = function (err) {
-    console.log(`server error:\n${err.stack}`);
-    this.server.close();
-};
+const broadcastListener = (new UdpServer({
+    port: PORT
+}));
 
-Server.prototype.handle = function (msg, rinfo) {
+broadcastListener.listen();
+
+broadcastListener.on('message', function (msg, rinfo) {
     console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
-    this.server.send("TEST", rinfo.port, rinfo.address);
-};
-
-
-Server.prototype.handle = function (socket) {
-    socket.setEncoding(this.encoding);
-    socket.on('data', (data) => {
-        this.handleData(data, socket);
-    });
-};
-
-Server.prototype.handleData = function (data, socket) {
-    data = data.toString(this.encoding);
-    socket.write(`${data}\r\nworld!\r\n ${this.port}`);
-};*/
+    this.server.send("TEST ${msg}", rinfo.port, rinfo.address);
+});

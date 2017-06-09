@@ -38,7 +38,7 @@
     </v-toolbar>
     <main>
       <v-container fluid>
-        <div class="title">Click on sidebar to re-open</div>
+        <div class="title"></div>
         <button-comp></button-comp>
       </v-container>
     </main>

@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
+let Log = require('../logger');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  Log.info('tesitng');
   res.render('index', { title: 'Express' });
 });
 

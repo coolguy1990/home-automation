@@ -1,11 +1,12 @@
-var express = require('express');
-var router = express.Router();
-let Log = require('../utils/logger');
+const express = require('express');
+
+const router = express.Router();
+const Log = require('../utils/logger');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', (req, res) => {
   Log.info('tesitng');
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Express', });
 });
 
 module.exports = router;

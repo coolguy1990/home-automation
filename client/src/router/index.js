@@ -1,5 +1,5 @@
-import Dashboard from '@/components/Dashboard.vue'
-import LandingPage from '@/components/LandingPage.vue'
+import Dashboard from '@/components/Dashboard.vue';
+import LandingPage from '@/components/LandingPage.vue';
 
 const routes = [
   {
@@ -12,6 +12,6 @@ const routes = [
     name: 'home',
     component: Dashboard,
   },
-]
+];
 
-export default routes
+export default routes;

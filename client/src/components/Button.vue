@@ -26,9 +26,15 @@
         clicked: false,
       }
     },
+    mounted () {
+      Socket.on('module', this.module)
+    },
     methods: {
       testing (event) {
         Socket.emit('button-clicked', this.clicked = !this.clicked)
+      },
+      module (room) {
+        console.log(room)
       },
     },
   }

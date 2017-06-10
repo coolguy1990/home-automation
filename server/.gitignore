@@ -39,3 +39,5 @@ public/.sass-cache
 # Test Report Files
 test-results.xml
 lintresults.xml
+
+yarn.lock

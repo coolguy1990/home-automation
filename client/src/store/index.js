@@ -1,10 +1,10 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import createLogger from 'vuex/dist/logger'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import createLogger from 'vuex/dist/logger';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
-const debug = true
+const debug = true;
 
 export default new Vuex.Store({
   modules: {
@@ -14,4 +14,4 @@ export default new Vuex.Store({
   plugins: [
     createLogger(),
   ],
-})
+});

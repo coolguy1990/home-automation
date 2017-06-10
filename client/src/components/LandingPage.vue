@@ -7,14 +7,14 @@
 </template>
 
 <script>
-  import Socket from '@/utils/Sockets'
+  import Socket from '@/utils/Sockets';
 
   export default {
     name: 'LandingPage',
     created () {
       Socket.on('message', function (data) {
-        console.warn(data)
-      })
+        console.warn(data);
+      });
     },
-  }
+  };
 </script>

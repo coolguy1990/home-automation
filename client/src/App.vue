@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'HomeAutomationRoot',
-}
+};
 </script>
 
 <style lang="stylus">

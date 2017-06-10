@@ -17,25 +17,25 @@
 </template>
 
 <script>
-  import Socket from '@/utils/Sockets'
+  import Socket from '@/utils/Sockets';
 
   export default {
     name: 'Button',
     data () {
       return {
         clicked: false,
-      }
+      };
     },
     mounted () {
-      Socket.on('module', this.module)
+      Socket.on('module', this.module);
     },
     methods: {
       testing (event) {
-        Socket.emit('button-clicked', this.clicked = !this.clicked)
+        Socket.emit('button-clicked', this.clicked = !this.clicked);
       },
       module (room) {
-        console.log(room)
+        console.log(room);
       },
     },
-  }
+  };
 </script>

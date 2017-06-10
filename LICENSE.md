@@ -629,10 +629,12 @@ to attach them to the start of each source file to most effectively
 state the exclusion of warranty; and each file should have at least
 the "copyright" line and a pointer to where the full notice is found.
 
-    Copyright (C) 2017  Kunal Mangaraj <mangaraj.kunal@gmail.com>
-    Copyright (C) 2017  Engit Prabhat <engitj@gmail.com>
-    Copyright (C) 2017  Jithin Jose <jithinjose2@gmail.com>
+        Copyright (C) 2017  Kunal Mangaraj <mangaraj.kunal@gmail.com>
+        Copyright (C) 2017  Engit Prabhat <engitj@gmail.com>
+        Copyright (C) 2017  Jithin Jose <jithinjose2@gmail.com> 
+    
 
+````
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published
     by the Free Software Foundation, either version 3 of the License, or
@@ -645,7 +647,7 @@ the "copyright" line and a pointer to where the full notice is found.
 
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+````
 Also add information on how to contact you by electronic and paper mail.
 
   If your software can interact with users remotely through a computer
